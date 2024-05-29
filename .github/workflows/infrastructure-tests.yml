@@ -16,6 +16,6 @@ jobs:
           terraform init
           terraform validate
         env:
-          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+          TF_API_TOKEN: ${{ env.TF_API_TOKEN }}
 permissions:
   contents: read
