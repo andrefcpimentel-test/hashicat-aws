@@ -12,10 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
       - name: Terraform Validate
-        with:
-          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
         run: |-
           terraform init
           terraform validate
+        env:
+          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
 permissions:
   contents: read
