@@ -1,8 +1,9 @@
 terraform {
   cloud {
-    organization = "AndrePimentel"
+    organization = "AndrePimentel-test"
 
     workspaces {
+      project = "production"
       name = "hashicat-aws"
     }
   }
