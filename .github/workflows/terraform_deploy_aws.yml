@@ -26,7 +26,15 @@ jobs:
       with:
         sparse-checkout: aws
         sparse-checkout-cone-mode: false
-        path: .
+
+    # This step is needed because expo-github-action does not support paths.
+    # Therefore all mobile app assets should be moved to the project root.
+    - name: Move_files
+      run: |
+          ls -lah
+          mv aws/* .
+          rm -rf aws
+          ls -lah    
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
