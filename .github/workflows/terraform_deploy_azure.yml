@@ -15,8 +15,6 @@ jobs:
     defaults:
       run:
         shell: bash
-    outputs:
-      tf-outputs: ${{steps.tf-out.outputs.out}}
 
     steps:
     # Checkout the repository to the GitHub Actions runner
@@ -62,7 +60,6 @@ jobs:
         TF_API_TOKEN: ${{ env.TF_API_TOKEN }}
 
     - name: Terraform Outputs
-      id: tf-out
-      run: echo out=$(terraform output) >> "$GITHUB_OUTPUT"
+      run: terraform output
       env:
         TF_API_TOKEN: ${{ env.TF_API_TOKEN }}
